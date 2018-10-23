@@ -3,6 +3,10 @@
 ################################################################################
 LOCAL_PATH := $(call my-dir)
 
+ANDROID_VERSION_STR := $(subst ., ,$(PLATFORM_VERSION))
+ANDROID_VERSION_MAJOR := $(firstword $(ANDROID_VERSION_STR))
+ifeq "7" "$(ANDROID_VERSION_MAJOR)"
+
 ################################################################################
 # Include optee-client common config and flags                                 #
 ################################################################################
@@ -58,3 +62,5 @@ LOCAL_SHARED_LIBRARIES := libteec
 LOCAL_MODULE := tee-supplicant
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
+
+endif
